@@ -6,12 +6,14 @@ This project is a React-based Todo application that interacts with an API to man
 
 - **Add and Delete Todos:** Users can add new tasks and remove existing ones.
 - **Toggle Todo Status:** Easily toggle the completion status of individual todos or all todos at once.
-- **Rename Todos:**   Edit the title of a todo by double-clicking and save changes via form submission or on losing focus.
-- **Loading Indicators:**   Loader overlays are displayed while waiting for API responses, improving user experience.
-- **Error Handling:**   Provides feedback in case of API errors, including notifications for failed updates.
-- **User-Friendly Interface:**  A clean and intuitive interface for managing todos with ease.
-- **Toggle All Todos:**  A checkbox to toggle the completion status of all todos simultaneously.
-- **Real-Time Updates:**  Changes are reflected in the UI immediately after successful API interactions.
+- **Rename Todos:** Edit the title of a todo by double-clicking and save changes via form submission or on losing focus.
+- **Loading Indicators:** Loader overlays are displayed while waiting for API responses, improving user experience.
+- **Error Handling:** Provides feedback in case of API errors, including notifications for failed updates.
+- **User-Friendly Interface:** A clean and intuitive interface for managing todos with ease.
+- **Toggle All Todos:** A checkbox to toggle the completion status of all todos simultaneously.
+- **Real-Time Updates:** Changes are reflected in the UI immediately after successful API interactions.
+- **Transitions and Animations:** Uses TransitionGroup and CSSTransition from react-transition-group to animate todo items as they are added or removed,
+  enhancing the visual appeal of the application.
 
 ## Technologies Used
 
@@ -22,6 +24,7 @@ This project is a React-based Todo application that interacts with an API to man
 - **SCSS:** For advanced styling
 - **LocalStorage:** Persists todos data to ensure tasks are retained across browser sessions.
 - **Fetch API:** For making API requests to manage todos.
+- **React-transition-group**: For managing transitions and animations, including TransitionGroup and CSSTransition for smooth animations of todo items.
 
 ## Live Preview
 
