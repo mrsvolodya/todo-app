@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useContext } from 'react';
 import { TodosContext } from '../TodosProvider/TodosProvider';
+import { Status } from '../enum/Status';
 
 export const TodoFooter: React.FC = () => {
   const { todos, handleClearCompleted, selectFilter, setSelectFilter } =
@@ -15,36 +16,36 @@ export const TodoFooter: React.FC = () => {
         {todosLeft.length} items left
       </span>
 
-      <nav className="filter" data-cy="Filter">
+      <nav className="filter" data-cy="Status">
         <a
-          href="#/"
+          href={Status.all}
           className={classNames('filter__link', {
-            selected: selectFilter === '#/' || !selectFilter,
+            selected: selectFilter === Status.all || !selectFilter,
           })}
           data-cy="FilterLinkAll"
-          onClick={() => setSelectFilter('#/')}
+          onClick={() => setSelectFilter(Status.all)}
         >
           All
         </a>
 
         <a
-          href="#/active"
+          href={Status.active}
           className={classNames('filter__link', {
-            selected: selectFilter === '#/active',
+            selected: selectFilter === Status.active,
           })}
           data-cy="FilterLinkActive"
-          onClick={() => setSelectFilter('#/active')}
+          onClick={() => setSelectFilter(Status.active)}
         >
           Active
         </a>
 
         <a
-          href="#/completed"
+          href={Status.completed}
           className={classNames('filter__link', {
-            selected: selectFilter === '#/completed',
+            selected: selectFilter === Status.completed,
           })}
           data-cy="FilterLinkCompleted"
-          onClick={() => setSelectFilter('#/completed')}
+          onClick={() => setSelectFilter(Status.completed)}
         >
           Completed
         </a>

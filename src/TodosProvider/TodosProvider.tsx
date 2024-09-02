@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { Todo } from '../types/Todo';
 import { deleteTodo, getTodos, updateTodo } from '../api/todos';
-import { Filter } from '../enum/Filter';
+import { Status } from '../enum/Status';
 import {
   useLocalStorage,
   useLocalStorageForFilter,
@@ -115,11 +115,11 @@ export const TodosProvider: React.FC<Props> = ({ children }) => {
 
   function filterTodos(list: Todo[], filterBy: string) {
     switch (filterBy) {
-      case Filter.all:
+      case Status.all:
         return list;
-      case Filter.active:
+      case Status.active:
         return list.filter(todo => !todo.completed);
-      case Filter.completed:
+      case Status.completed:
         return list.filter(todo => todo.completed);
       default:
         return list;
