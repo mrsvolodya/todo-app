@@ -23,6 +23,7 @@ export const TodoItem: React.FC<Props> = ({ todo }) => {
   const [editForm, setEditForm] = useState<Todo | null>(null);
   const [title, setTitle] = useState(todo.title);
   const focus = useRef<HTMLInputElement>(null);
+  const isEdit = editForm?.title === title;
 
   useEffect(() => {
     if (focus.current) {
@@ -56,26 +57,23 @@ export const TodoItem: React.FC<Props> = ({ todo }) => {
     fetchUpdateTodo();
   };
 
-  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      if (!title) {
-        setEditForm(todo);
-        handleDelete(todo.id);
-      } else {
-        handleUpdateTodo();
-        setEditForm(null);
-      }
-    } else if (e.key === 'Escape') {
-      setTitle(todo.title);
+  const onBlur = () => {
+    if (!title) {
+      setEditForm(todo);
+      handleDelete(todo.id);
+    } else if (isEdit) {
+      setEditForm(null);
+    } else {
+      handleUpdateTodo();
       setEditForm(null);
     }
   };
 
-  const handleOnBlur = () => {
-    if (!title) {
-      handleDelete(todo.id);
-    } else {
-      handleUpdateTodo();
+  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      onBlur();
+    } else if (e.key === 'Escape') {
+      setTitle(todo.title);
       setEditForm(null);
     }
   };
@@ -126,7 +124,7 @@ export const TodoItem: React.FC<Props> = ({ todo }) => {
             value={title}
             onChange={e => setTitle(e.target.value)}
             onKeyUp={onKeyUp}
-            onBlur={handleOnBlur}
+            onBlur={onBlur}
           />
         </form>
       )}
